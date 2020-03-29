@@ -46,8 +46,9 @@ task createNativeDepsDirectories {
 }
 
 task downloadBoost(dependsOn: createNativeDepsDirectories, type: Download) {
-    src("https://github.com/react-native-community/boost-for-react-native/releases/download/v${BOOST_VERSION.replace("_", ".")}-0/boost_${BOOST_VERSION}.tar.gz")
-    onlyIfNewer(true)
+	//src("https://github.com/react-native-community/boost-for-react-native/releases/download/v${BOOST_VERSION.replace("_", ".")}-0/boost_${BOOST_VERSION}.tar.gz")
+    src("http://127.0.0.1:8080/boost_${BOOST_VERSION}.tar.gz")    
+	onlyIfNewer(true)
     overwrite(false)
     dest(new File(downloadsDir, "boost_${BOOST_VERSION}.tar.gz"))
 }
@@ -64,8 +65,9 @@ task prepareBoost(dependsOn: boostPath ? [] : [downloadBoost], type: Copy) {
 }
 
 task downloadDoubleConversion(dependsOn: createNativeDepsDirectories, type: Download) {
-    src("https://github.com/google/double-conversion/archive/v${DOUBLE_CONVERSION_VERSION}.tar.gz")
-    onlyIfNewer(true)
+    //src("https://github.com/google/double-conversion/archive/v${DOUBLE_CONVERSION_VERSION}.tar.gz")
+    src("http://127.0.0.1:8080/double-conversion-${DOUBLE_CONVERSION_VERSION}.tar.gz")    
+	onlyIfNewer(true)
     overwrite(false)
     dest(new File(downloadsDir, "double-conversion-${DOUBLE_CONVERSION_VERSION}.tar.gz"))
 }
@@ -80,8 +82,9 @@ task prepareDoubleConversion(dependsOn: dependenciesPath ? [] : [downloadDoubleC
 }
 
 task downloadFolly(dependsOn: createNativeDepsDirectories, type: Download) {
-    src("https://github.com/facebook/folly/archive/v${FOLLY_VERSION}.tar.gz")
-    onlyIfNewer(true)
+    //src("https://github.com/facebook/folly/archive/v${FOLLY_VERSION}.tar.gz")
+    src("http://127.0.0.1:8080/folly-${FOLLY_VERSION}.tar.gz")    
+	onlyIfNewer(true)
     overwrite(false)
     dest(new File(downloadsDir, "folly-${FOLLY_VERSION}.tar.gz"))
 }
@@ -116,7 +119,8 @@ task prepareHermes() {
 }
 
 task downloadGlog(dependsOn: createNativeDepsDirectories, type: Download) {
-    src("https://github.com/google/glog/archive/v${GLOG_VERSION}.tar.gz")
+    //src("https://github.com/google/glog/archive/v${GLOG_VERSION}.tar.gz")
+    src("http://127.0.0.1:8080/glog-${GLOG_VERSION}.tar.gz")
     onlyIfNewer(true)
     overwrite(false)
     dest(new File(downloadsDir, "glog-${GLOG_VERSION}.tar.gz"))
